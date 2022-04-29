@@ -119,5 +119,5 @@ An age correction increases or decreases the actual age of an individual.
 For instance, an age correction of -3 years assumes that an individual aged :math:`x` (real age)
 is aged :math:`x-3` instead (corrected age).
 Age corrections are used to provide a safety loading when performing actuarial calculations.
-It is common practice to use a negative age correction (reduction) when calculation the present value of an annuity
+It is common practice to use a negative age correction (reduction) when calculating the present value of an annuity
 with the MR/FR/XR tables.
