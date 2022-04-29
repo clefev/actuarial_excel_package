@@ -1,13 +1,13 @@
 def survivors(x, table=1, correction=0):
     r"""
-    Compute the number of survivors :math:`l_x` according to the mortality table.
+    Compute the number of survivors :math:`l_x` according to the life table.
 
     Note
     ----
     The number of survivors at age :math:`x` is denoted by :math:`l_x`.
 
     If the age :math:`x` is given as an integer (e.g., :math:`x=50` for an individual aged 50 years old),
-    then :math:`l_x` represents the number of people alive at age :math:`x` according to the mortality table.
+    then :math:`l_x` represents the number of people alive at age :math:`x` according to the life table.
 
     If the age :math:`x` is given as a decimal number (e.g., :math:`x=50.75` for an individual aged 50 years and 9 months),
     then :math:`l_x` is linearly interpolated as following
@@ -25,7 +25,7 @@ def survivors(x, table=1, correction=0):
     x : numeric
         Age.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -34,13 +34,32 @@ def survivors(x, table=1, correction=0):
     -------
     numeric
         Number of survivors.
+
+    Examples
+    --------
+    Compute :math:`l_{50}`, :math:`l_{51}` and :math:`l_{50.75}` according to the MR table:
+
+    >>> survivors(50, "MR")
+    941 273
+    >>> survivors(51, "MR")
+    937 628
+    >>> survivors(50.75, "MR")
+    938 539.25 # 0.25*941 273 + 0.75*937 628
+
+    Compute :math:`l_{65}` according to the XR table with an age correction of -5 years
+    (this is equivalent to compute :math:`l_{60}` without age correction as shown below):
+
+    >>> survivors(65, "XR", -5)
+    916 308
+    >>> survivors(60, "XR")
+    916 308
     """
 
     pass
 
 def deaths(x, n=1, table=1, correction=0):
     r"""
-    Compute the number of deaths between age :math:`x` and :math:`x+n` according to the mortality table.
+    Compute the number of deaths between age :math:`x` and :math:`x+n` according to the life table.
 
     Note
     ----
@@ -58,7 +77,7 @@ def deaths(x, n=1, table=1, correction=0):
     n : numeric
         Horizon time.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -67,6 +86,23 @@ def deaths(x, n=1, table=1, correction=0):
     -------
     numeric
         Number of deaths.
+
+    Examples
+    --------
+    Compute :math:`d_{50}` according to the MR table:
+
+    >>> deaths(50, 1, "MR")
+    3 645
+
+    Compute the number of deaths between age 54.5 and 65 according to the FK' table:
+
+    >>> deaths(54.5, 10.5, "FK'")
+    110 418.5
+
+    Compute the number of deaths between age 80 and 85 according to the XR table with an age correction of -3 years:
+
+    >>> deaths(80, 5, "XR", -3)
+    137 040
     """
 
     pass
@@ -78,13 +114,20 @@ def survival_probability(x, n=1, table=1, correction=0):
     Note
     ----
     The survival probability :math:`_np_x` is the probability that an individual
-    of age :math:`x` survives in the next :math:`n` years.
+    aged :math:`x` survives in the next :math:`n` years.
     It is computed as
 
     .. math::
         _np_x = \frac{l_{x+n}}{l_x}
 
     where :math:`l_x` is the number of people alive at age :math:`x`.
+
+    Finally, note that we have the following decomposition formula
+
+    .. math::
+        _np_x = {}_tp_x \cdot {}_{n-t}p_{x+t}
+
+    for all :math:`t \in (0,n)`.
 
     Parameters
     ----------
@@ -93,7 +136,7 @@ def survival_probability(x, n=1, table=1, correction=0):
     n : numeric
         Horizon time.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -102,6 +145,23 @@ def survival_probability(x, n=1, table=1, correction=0):
     -------
     numeric between 0 and 1
         Probability that an individual aged :math:`x` survives in the next :math:`n` years.
+
+    Examples
+    --------
+    Compute :math:`p_{50}` according to the MR table:
+
+    >>> survival_probability(50, 1, "MR")
+    99.61%
+
+    Compute :math:`_{10.5}p_{54.5}` according to the FK' table:
+
+    >>> survival_probability(54.5, 10.5, "FK'")
+    87.89%
+
+    Compute :math:`_{5}p_{80}` according to the XR table with an age correction of -3 years:
+
+    >>> survival_probability(80, 5, "XR", -3)
+    80.18%
     """
 
     pass
@@ -113,13 +173,20 @@ def death_probability(x, n=1, table=1, correction=0):
     Note
     ----
     The death probability :math:`_nq_x` is the probability that an individual
-    of age :math:`x` dies in the next :math:`n` years.
+    aged :math:`x` dies in the next :math:`n` years.
     It is computed as
 
     .. math::
         _nq_x = 1 - _np_x = \frac{l_x - l_{x+n}}{l_x}
 
     where :math:`l_x` is the number of people alive at age :math:`x`.
+
+    Finally, note that we have the following decomposition formula
+
+    .. math::
+        _nq_x = {}_tq_x + {}_tp_x \cdot {}_{n-t}q_{x+t}
+
+    for all :math:`t \in (0,n)`.
 
     Parameters
     ----------
@@ -128,7 +195,7 @@ def death_probability(x, n=1, table=1, correction=0):
     n : numeric
         Horizon time.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -137,6 +204,23 @@ def death_probability(x, n=1, table=1, correction=0):
     -------
     numeric between 0 and 1
         Probability that an individual aged :math:`x` dies in the next :math:`n` years.
+
+    Examples
+    --------
+    Compute :math:`q_{50}` according to the MR table:
+
+    >>> death_probability(50, 1, "MR")
+    0.39%
+
+    Compute :math:`_{10.5}q_{54.5}` according to the FK' table:
+
+    >>> death_probability(54.5, 10.5, "FK'")
+    12.11%
+
+    Compute :math:`_{5}q_{80}` according to the XR table with an age correction of -3 years:
+
+    >>> death_probability(80, 5, "XR", -3)
+    19.82%
     """
 
     pass
@@ -150,7 +234,7 @@ def expected_remaining_lifetime(x, table=1, correction=0):
     The expected remaining lifetime of an individual aged :math:`x` is defined by
 
     .. math::
-        e_x = \mathbb{E}[T_x]
+        e_x = \mathbb{E}[T_x] = \int_0^\infty {}_tp_x dt
 
     where :math:`T_x` is the random variable describing the remaining lifetime of an individual aged :math:`x`.
 
@@ -159,7 +243,7 @@ def expected_remaining_lifetime(x, table=1, correction=0):
     x : numeric
         Age.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -168,6 +252,23 @@ def expected_remaining_lifetime(x, table=1, correction=0):
     -------
     numeric
         Expected remaining lifetime of an individual aged :math:`x`.
+
+    Examples
+    --------
+    Compute the life expectancy of a new born according to the MR table:
+
+    >>> expected_remaining_lifetime(0, "MR")
+    77.71
+
+    Compute :math:`e_{54.5}` according to the FK' table:
+
+    >>> expected_remaining_lifetime(54.5, "FK'")
+    22.08 # a woman aged 54.5 years old will die on average at 76.58 years old (= 54.5 + 22.08)
+
+    Compute :math:`e_{80}` according to the XR table with an age correction of -3 years:
+
+    >>> expected_remaining_lifetime(80, "XR", -3)
+    11.42
     """
 
     pass
@@ -198,7 +299,7 @@ def pure_endowment(x, n=1, i=0, table=1, correction=0):
     i : numeric
         Guaranteed interest rate.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -207,6 +308,23 @@ def pure_endowment(x, n=1, i=0, table=1, correction=0):
     -------
     numeric
         Present value of the pure endowment.
+
+    Examples
+    --------
+    Compute :math:`E_{50}` according to the MR table with :math:`i=2\%`:
+
+    >>> pure_endowment(50, 1, 0.02, "MR")
+    0.9766
+
+    Compute :math:`_{10.5}E_{54.5}` according to the FK' table with :math:`i=2\%`:
+
+    >>> pure_endowment(54.5, 10.5, 0.02, "FK'")
+    0.7139
+
+    Compute :math:`_{5}E_{80}` according to the XR table with :math:`i=2\%` and an age correction of -3 years:
+
+    >>> pure_endowment(80, 5, 0.02, "XR", -3)
+    0.7262
     """
 
     pass
@@ -252,7 +370,7 @@ def whole_life_annuity(x, i=0, table=1, correction=0, beginning=False, freq=1):
     i : numeric
         Guaranteed interest rate.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -267,6 +385,28 @@ def whole_life_annuity(x, i=0, table=1, correction=0, beginning=False, freq=1):
     -------
     numeric
         Present value of the whole life annuity.
+
+    Examples
+    --------
+    Compute :math:`a_{50}` and :math:`\ddot{a}_{50}` according to the MR table with :math:`i=2\%`
+    (the annuity is paid on a yearly basis):
+
+    >>> whole_life_annuity(50, 0.02, "MR")
+    21.68
+    >>> whole_life_annuity(50, 0.02, "MR",, TRUE)
+    22.68
+
+    Compute :math:`a_{54.5}^{(4)}` according to the FR table with :math:`i=2\%`
+    (the annuity is paid on a quarterly basis):
+
+    >>> whole_life_annuity(54.5, 0.02, "FR",,,4)
+    89.36
+
+    Compute :math:`\ddot{a}_{80}^{(12)}` according to the XR table with :math:`i=2\%` and an age correction of -3 years
+    (the annuity is paid on a monthly basis):
+
+    >>> whole_life_annuity(80, 0.02, "XR", -3, TRUE, 12)
+    119.05
     """
 
     pass
@@ -314,7 +454,7 @@ def term_annuity(x, n=1, i=0, table=1, correction=0, beginning=False, freq=1):
     i : numeric
         Guaranteed interest rate.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -329,6 +469,28 @@ def term_annuity(x, n=1, i=0, table=1, correction=0, beginning=False, freq=1):
     -------
     numeric
         Present value of the term annuity.
+
+    Examples
+    --------
+    Compute :math:`_{10}a_{50}` and :math:`_{10}\ddot{a}_{50}` according to the MR table with :math:`i=2\%`
+    (the annuity is paid on a yearly basis):
+
+    >>> term_annuity(50, 10, 0.02, "MR")
+    8.74
+    >>> term_annuity(50, 10, 0.02, "MR",, TRUE)
+    8.97
+
+    Compute :math:`_{10.5}a_{54.5}^{(4)}` according to the FR table with :math:`i=2\%`
+    (the annuity is paid on a quarterly basis):
+
+    >>> term_annuity(54.5, 10.5, 0.02, "FR",,,4)
+    37.11
+
+    Compute :math:`_{20}\ddot{a}_{80}^{(12)}` according to the XR table with :math:`i=2\%` and an age correction of -3 years
+    (the annuity is paid on a monthly basis):
+
+    >>> term_annuity(80, 20, 0.02, "XR", -3, TRUE, 12)
+    116.46
     """
 
     pass
@@ -367,7 +529,7 @@ def whole_life_insurance(x, i=0, table=1, correction=0, freq=1):
     i : numeric
         Guaranteed interest rate.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -379,6 +541,26 @@ def whole_life_insurance(x, i=0, table=1, correction=0, freq=1):
     -------
     numeric
         Present value of the whole life insurance.
+
+    Examples
+    --------
+    Compute :math:`A_{50}` according to the MK table with :math:`i=2\%`
+    (the death benefit is paid at the end of the year of the death):
+
+    >>> whole_life_insurance(50, 0.02, "MK")
+    0.6286
+
+    Compute :math:`A_{54.5}^{(4)}` according to the FK table with :math:`i=2\%`
+    (the death benefit is paid at the end of the quarter of the death):
+
+    >>> whole_life_insurance(54.5, 0.02, "FK",,4)
+    0.6295
+
+    Compute :math:`A_{80}^{(12)}` according to the XK table with :math:`i=2\%` and an age correction of -3 years
+    (the death benefit is paid at the end of the month of the death):
+
+    >>> whole_life_insurance(80, 0.02, "XK", -3, 12)
+    0.8681
     """
 
     pass
@@ -414,7 +596,7 @@ def term_insurance(x, n=1, i=0, table=1, correction=0, freq=1):
     i : numeric
         Guaranteed interest rate.
     table : string
-        Mortality table to use.
+        Life table to use.
     correction : numeric
         Age correction. The correction can be positive (age increase) or negative (age reduction).
         The default assumes no correction.
@@ -426,6 +608,26 @@ def term_insurance(x, n=1, i=0, table=1, correction=0, freq=1):
     -------
     numeric
         Present value of the term insurance.
+
+    Examples
+    --------
+    Compute :math:`_{10}A_{50}` according to the MK table with :math:`i=2\%`
+    (the death benefit is paid at the end of the year of the death):
+
+    >>> term_insurance(50, 10, 0.02, "MK")
+    0.0962
+
+    Compute :math:`_{10.5}A_{54.5}^{(4)}` according to the FK table with :math:`i=2\%`
+    (the death benefit is paid at the end of the quarter of the death):
+
+    >>> term_insurance(54.5, 10.5, 0.02, "FK",,4)
+    0.0873
+
+    Compute :math:`_{20}A_{80}^{(12)}` according to the XK table with :math:`i=2\%` and an age correction of -3 years
+    (the death benefit is paid at the end of the month of the death):
+
+    >>> term_insurance(80, 20, 0.02, "XK", -3, 12)
+    0.8626
     """
 
     pass

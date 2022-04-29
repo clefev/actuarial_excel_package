@@ -10,6 +10,8 @@
       <link rel="stylesheet" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -41,8 +43,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Employee Benefits</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Life table</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="survivors.html">Survivors</a></li>
@@ -114,7 +115,7 @@ The formula assumes that the payment occurs at the end of the period and not at 
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>numeric</em>) – Age.</p></li>
 <li><p><strong>i</strong> (<em>numeric</em>) – Guaranteed interest rate.</p></li>
-<li><p><strong>table</strong> (<em>string</em>) – Mortality table to use.</p></li>
+<li><p><strong>table</strong> (<em>string</em>) – Life table to use.</p></li>
 <li><p><strong>correction</strong> (<em>numeric</em>) – Age correction. The correction can be positive (age increase) or negative (age reduction).
 The default assumes no correction.</p></li>
 <li><p><strong>freq</strong> (<em>numeric</em>) – Payment frequency.
@@ -128,6 +129,25 @@ The default assumes annual payment.</p></li>
 <dd class="field-odd"><p>numeric</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<p>Compute <span class="math notranslate nohighlight">\(A_{50}\)</span> according to the MK table with <span class="math notranslate nohighlight">\(i=2\%\)</span>
+(the death benefit is paid at the end of the year of the death):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">whole_life_insurance</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;MK&quot;</span><span class="p">)</span>
+<span class="go">0.6286</span>
+</pre></div>
+</div>
+<p>Compute <span class="math notranslate nohighlight">\(A_{54.5}^{(4)}\)</span> according to the FK table with <span class="math notranslate nohighlight">\(i=2\%\)</span>
+(the death benefit is paid at the end of the quarter of the death):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">whole_life_insurance</span><span class="p">(</span><span class="mf">54.5</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;FK&quot;</span><span class="p">,,</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">0.6295</span>
+</pre></div>
+</div>
+<p>Compute <span class="math notranslate nohighlight">\(A_{80}^{(12)}\)</span> according to the XK table with <span class="math notranslate nohighlight">\(i=2\%\)</span> and an age correction of -3 years
+(the death benefit is paid at the end of the month of the death):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">whole_life_insurance</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;XK&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="go">0.8681</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

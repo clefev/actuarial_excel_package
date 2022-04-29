@@ -10,6 +10,8 @@
       <link rel="stylesheet" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -41,8 +43,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Employee Benefits</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Life table</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Survivors</a></li>
@@ -92,12 +93,12 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="employee_benefits.life_table.survivors">
 <span class="sig-name descname"><span class="pre">survivors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#employee_benefits.life_table.survivors" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the number of survivors <span class="math notranslate nohighlight">\(l_x\)</span> according to the mortality table.</p>
+<dd><p>Compute the number of survivors <span class="math notranslate nohighlight">\(l_x\)</span> according to the life table.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The number of survivors at age <span class="math notranslate nohighlight">\(x\)</span> is denoted by <span class="math notranslate nohighlight">\(l_x\)</span>.</p>
 <p>If the age <span class="math notranslate nohighlight">\(x\)</span> is given as an integer (e.g., <span class="math notranslate nohighlight">\(x=50\)</span> for an individual aged 50 years old),
-then <span class="math notranslate nohighlight">\(l_x\)</span> represents the number of people alive at age <span class="math notranslate nohighlight">\(x\)</span> according to the mortality table.</p>
+then <span class="math notranslate nohighlight">\(l_x\)</span> represents the number of people alive at age <span class="math notranslate nohighlight">\(x\)</span> according to the life table.</p>
 <p>If the age <span class="math notranslate nohighlight">\(x\)</span> is given as a decimal number (e.g., <span class="math notranslate nohighlight">\(x=50.75\)</span> for an individual aged 50 years and 9 months),
 then <span class="math notranslate nohighlight">\(l_x\)</span> is linearly interpolated as following</p>
 <div class="math notranslate nohighlight">
@@ -110,7 +111,7 @@ then <span class="math notranslate nohighlight">\(l_x\)</span> is linearly inter
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<em>numeric</em>) – Age.</p></li>
-<li><p><strong>table</strong> (<em>string</em>) – Mortality table to use.</p></li>
+<li><p><strong>table</strong> (<em>string</em>) – Life table to use.</p></li>
 <li><p><strong>correction</strong> (<em>numeric</em>) – Age correction. The correction can be positive (age increase) or negative (age reduction).
 The default assumes no correction.</p></li>
 </ul>
@@ -122,6 +123,24 @@ The default assumes no correction.</p></li>
 <dd class="field-odd"><p>numeric</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<p>Compute <span class="math notranslate nohighlight">\(l_{50}\)</span>, <span class="math notranslate nohighlight">\(l_{51}\)</span> and <span class="math notranslate nohighlight">\(l_{50.75}\)</span> according to the MR table:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">survivors</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;MR&quot;</span><span class="p">)</span>
+<span class="go">941 273</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">survivors</span><span class="p">(</span><span class="mi">51</span><span class="p">,</span> <span class="s2">&quot;MR&quot;</span><span class="p">)</span>
+<span class="go">937 628</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">survivors</span><span class="p">(</span><span class="mf">50.75</span><span class="p">,</span> <span class="s2">&quot;MR&quot;</span><span class="p">)</span>
+<span class="go">938 539.25 # 0.25*941 273 + 0.75*937 628</span>
+</pre></div>
+</div>
+<p>Compute <span class="math notranslate nohighlight">\(l_{65}\)</span> according to the XR table with an age correction of -5 years
+(this is equivalent to compute <span class="math notranslate nohighlight">\(l_{60}\)</span> without age correction as shown below):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">survivors</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="s2">&quot;XR&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">916 308</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">survivors</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="s2">&quot;XR&quot;</span><span class="p">)</span>
+<span class="go">916 308</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

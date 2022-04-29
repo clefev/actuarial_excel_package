@@ -10,6 +10,8 @@
       <link rel="stylesheet" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -18,6 +20,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -40,8 +43,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Employee Benefits</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Life table</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="survivors.html">Survivors</a></li>
@@ -89,6 +91,132 @@
 <span id="employee-benefits-life-table"></span><h1>Life table<a class="headerlink" href="#life-table" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This module is in draft version.</p>
+</div>
+<p>The life table module of the Employee Benefits add-in allows you to perform calculations
+related to life tables.</p>
+<p class="rubric"><span class="subtitle">Conventions and notations</span></p>
+<p>The following conventions and notations will be used throughout the rest of the documentation:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>All time units are expressed in years.</p></li>
+<li><p>The current age of an individual is denoted <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p>The guaranteed interest rate is yearly compounded and denoted <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+</ul>
+</div></blockquote>
+<p class="rubric"><span class="subtitle">Life tables</span></p>
+<p>The life tables recognized by the module are listed below:</p>
+<table class="colwidths-given docutils align-center" id="id1">
+<caption><span class="caption-text">List of life tables</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p class="centered">
+<strong>Name</strong></p></th>
+<th class="head"><p class="centered">
+<strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>MR</p></th>
+<td><p>Belgian regulatory table for male life operations</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>FR</p></th>
+<td><p>Belgian regulatory table for female life operations</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>XR</p></th>
+<td><p>Belgian regulatory table for unisex life operations</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>MK</p></th>
+<td><p>Belgian regulatory table for male death operations</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>FK</p></th>
+<td><p>Belgian regulatory table for female death operations</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>FK’</p></th>
+<td><p>Alternative table for female death operations including
+a higher mortality loading compared to the regulatory FK table</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>XK</p></th>
+<td><p>Belgian regulatory table for unisex death operations</p></td>
+</tr>
+</tbody>
+</table>
+<p>These tables are calculated using the Makeham model. The Makeham model is a parametric model assuming
+that the number of people alive at age <span class="math notranslate nohighlight">\(x\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[l_x = k s^x g^{c^x}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k&gt;0\)</span>, <span class="math notranslate nohighlight">\(s \in (0,1]\)</span>, <span class="math notranslate nohighlight">\(g \in (0,1)\)</span> and <span class="math notranslate nohighlight">\(c&gt;1\)</span>.
+The following parameters are used to build the Belgian regulatory tables:</p>
+<table class="docutils align-center" id="id2">
+<caption><span class="caption-text">Parameters of the Makeham model</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p class="centered">
+<strong>MR</strong></p></th>
+<th class="head"><p class="centered">
+<strong>FR</strong></p></th>
+<th class="head"><p class="centered">
+<strong>MK</strong></p></th>
+<th class="head"><p class="centered">
+<strong>FK</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<td><p>1000266.63</p></td>
+<td><p>1000048.56</p></td>
+<td><p>1000450.59</p></td>
+<td><p>1000097.39</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><span class="math notranslate nohighlight">\(s\)</span></p></th>
+<td><p>0.999441703848</p></td>
+<td><p>0.999669730966</p></td>
+<td><p>0.999106875782</p></td>
+<td><p>0.999257048061</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><span class="math notranslate nohighlight">\(g\)</span></p></th>
+<td><p>0.999733441115</p></td>
+<td><p>0.999951440172</p></td>
+<td><p>0.999549614043</p></td>
+<td><p>0.999902624311</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><span class="math notranslate nohighlight">\(c\)</span></p></th>
+<td><p>1.101077536030</p></td>
+<td><p>1.116792453830</p></td>
+<td><p>1.103798111448</p></td>
+<td><p>1.118239062025</p></td>
+</tr>
+</tbody>
+</table>
+<p>The alternative FK’ table is defined in the same way as the FK table except that the parameter <span class="math notranslate nohighlight">\(c\)</span>
+is set to 1.122 (leading to an increase in mortality).
+The unisex tables XR and XK are calculated for each integer age <span class="math notranslate nohighlight">\(x\)</span> as an arithmetic average of
+the MR-FR and MK-FK tables i.e.</p>
+<div class="math notranslate nohighlight">
+\[l_x^{XR} = \frac{l_x^{MR} + l_x^{FR}}{2} \qquad \text{and} \qquad l_x^{XK} = \frac{l_x^{MK} + l_x^{FK}}{2}.\]</div>
+<p>Finally, note that all of these tables are only calculated for integer ages <span class="math notranslate nohighlight">\(x\)</span> (not for fractional ages)
+and that the number of people alive <span class="math notranslate nohighlight">\(l_x\)</span> is rounded to the nearest integer.
+In the case of fractional ages, a linear interpolation is performed (see <a class="reference internal" href="survivors.html#employee-benefits-life-table-survivors"><span class="std std-ref">Survivors</span></a>).</p>
+<p class="rubric"><span class="subtitle">Age correction</span></p>
+<p>All the functions implemented in this module provide a possibility of age correction.
+An age correction increases or decreases the actual age of an individual.
+For instance, an age correction of -3 years assumes that an individual aged <span class="math notranslate nohighlight">\(x\)</span> (real age)
+is aged <span class="math notranslate nohighlight">\(x-3\)</span> instead (corrected age).
+Age corrections are used to provide a safety loading when performing actuarial calculations.
+It is common practice to use a negative age correction (reduction) when calculation the present value of an annuity
+with the MR/FR/XR tables.</p>
 </section>
 
 

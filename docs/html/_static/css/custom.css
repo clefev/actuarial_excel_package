@@ -1,0 +1,16 @@
+/* Wrap the text in the table if it is too long (i.e. split long text in a table into multiple lines) */
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+  white-space: normal;
+}
+
+/* Create subtitle rubric (equivalent to html <h3>) */
+.rubric > .subtitle {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}

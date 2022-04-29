@@ -36,6 +36,27 @@ extensions = [
 # Set the default role for text in back quotes like `text`.
 default_role = 'py:obj' # refers to a Python object like a variable name
 
+# Define global substitution available in all rst files
+rst_prolog = """
+.. |0| replace:: ⓿
+.. |1| replace:: ❶
+.. |2| replace:: ❷
+.. |3| replace:: ❸
+.. |4| replace:: ❹
+.. |5| replace:: ❺
+.. |6| replace:: ❻
+.. |7| replace:: ❼
+.. |8| replace:: ❽
+.. |9| replace:: ❾
+
+.. |none| replace:: `!`
+.. |V| replace:: :opticon:`check,text-success`
+.. |X| replace:: :opticon:`x,text-danger`
+
+.. role:: subtitle
+    :class: subtitle
+"""
+
 # If true, the current module name will be prepended to all description
 add_module_names = False
 
@@ -59,3 +80,8 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_css_files = [
+    'css/custom.css', # load custom css file
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' # load FontAwesome CSS (https://cdnjs.com/libraries/font-awesome)
+]
