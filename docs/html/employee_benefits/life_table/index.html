@@ -108,8 +108,8 @@ related to life tables.</p>
 </div></blockquote>
 <p class="rubric"><span class="subtitle">Life tables</span></p>
 <p>The life tables recognized by the module are listed below:</p>
-<table class="colwidths-given docutils align-center" id="id1">
-<caption><span class="caption-text">List of life tables</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<table class="colwidths-given docutils align-center" id="id2">
+<caption><span class="caption-text">List of life tables</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 80%" />
@@ -152,8 +152,8 @@ that the number of people alive at age <span class="math notranslate nohighlight
 \[l_x = k s^x g^{c^x}\]</div>
 <p>where <span class="math notranslate nohighlight">\(k&gt;0\)</span>, <span class="math notranslate nohighlight">\(s \in (0,1]\)</span>, <span class="math notranslate nohighlight">\(g \in (0,1)\)</span> and <span class="math notranslate nohighlight">\(c&gt;1\)</span>.
 The following parameters are used to build the Belgian regulatory tables:</p>
-<table class="docutils align-center" id="id2">
-<caption><span class="caption-text">Parameters of the Makeham model</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<table class="docutils align-center" id="id3">
+<caption><span class="caption-text">Parameters of the Makeham model</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 20%" />
@@ -213,10 +213,15 @@ In the case of fractional ages, a linear interpolation is performed (see <a clas
 <p>All the functions implemented in this module provide a possibility of age correction.
 An age correction increases or decreases the actual age of an individual.
 For instance, an age correction of -3 years assumes that an individual aged <span class="math notranslate nohighlight">\(x\)</span> (real age)
-is aged <span class="math notranslate nohighlight">\(x-3\)</span> instead (corrected age).
+is aged <span class="math notranslate nohighlight">\(x-3\)</span> instead (corrected age) <a class="footnote-reference brackets" href="#corrected-age" id="id1">1</a>.
 Age corrections are used to provide a safety loading when performing actuarial calculations.
-It is common practice to use a negative age correction (reduction) when calculation the present value of an annuity
+It is common practice to use a negative age correction (reduction) when calculating the present value of an annuity
 with the MR/FR/XR tables.</p>
+<dl class="footnote brackets">
+<dt class="label" id="corrected-age"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>In practice, the corrected age is calculated as <span class="math notranslate nohighlight">\(\max(x + correction, 0)\)</span> to avoid negative ages when the correction is negative.</p>
+</dd>
+</dl>
 </section>
 
 

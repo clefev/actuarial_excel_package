@@ -117,7 +117,9 @@ In the case of fractional ages, a linear interpolation is performed (see :ref:`e
 All the functions implemented in this module provide a possibility of age correction.
 An age correction increases or decreases the actual age of an individual.
 For instance, an age correction of -3 years assumes that an individual aged :math:`x` (real age)
-is aged :math:`x-3` instead (corrected age).
+is aged :math:`x-3` instead (corrected age) [#corrected_age]_.
 Age corrections are used to provide a safety loading when performing actuarial calculations.
-It is common practice to use a negative age correction (reduction) when calculation the present value of an annuity
+It is common practice to use a negative age correction (reduction) when calculating the present value of an annuity
 with the MR/FR/XR tables.
+
+.. [#corrected_age] In practice, the corrected age is calculated as :math:`\max(x + correction, 0)` to avoid negative ages when the correction is negative.

@@ -11,7 +11,7 @@ This document is intended to serve as documentation for Excel add-ins dedicated 
 Contents
 --------
 
-The following add-ins have been implemented.
+The following Excel add-ins have been implemented.
 Each add-in contains modules to separate features and each module contains a set of functions.
 
 .. toctree::
@@ -19,9 +19,24 @@ Each add-in contains modules to separate features and each module contains a set
 
     employee_benefits/index.rst
 
-Indices and tables
-------------------
+Contact
+-------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Questions ? Remarks ? Bugs ? Don't hesitate to contact the modelling team !
+
+.. list-table:: Contact list
+    :header-rows: 1
+    :align: center
+
+    * - .. centered:: Name
+      - .. centered:: Responsibility
+      - .. centered:: Email
+    * - Corentin LEFEVRE
+      - Owner
+      - clefevre@wikitree.eu
+    * - Dylan MEYNAERT
+      -
+      - dmeynaert@wikitree.eu
+    * - Thibaud NOE
+      -
+      - tnoe@wikitree.eu
