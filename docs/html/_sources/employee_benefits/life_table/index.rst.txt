@@ -39,9 +39,9 @@ The random variable describing the time-to-death (from birth) is denoted :math:`
 Therefore, the remaining lifetime of an individual aged :math:`x` is given by the random variable:
 
 .. math::
-    T_x = T-x | T>x,
+    T_x = T-x \mid T>x,
 
-that is the remaining lifetime (i.e. :math:`T-x`) given that the individual is still alive at age :math:`x` (i.e. :math:`T>x`).
+that is the remaining lifetime (i.e. :math:`T-x`) given that the individual is still alive at age :math:`x` (i.e. knowing that :math:`T>x`).
 
 .. rubric:: :subtitle:`Life tables`
 

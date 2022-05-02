@@ -126,7 +126,7 @@ def survival_probability(x, n=1, table=1, correction=0):
     the random variable :math:`T_x`:
 
     .. math::
-        Pr \left( T_x > n \right) = Pr \left( T > x+n | T > x \right) = {}_np_x
+        Pr \left( T_x > n \right) = Pr \left( T > x+n \mid T > x \right) = {}_np_x
 
     where :math:`T_x` is the random variable describing the remaining lifetime of an individual aged :math:`x`.
 
@@ -193,7 +193,7 @@ def death_probability(x, n=1, table=1, correction=0):
     the random variable :math:`T_x`:
 
     .. math::
-        Pr \left( T_x \leq n \right) = Pr \left( T \leq x+n | T > x \right) = {}_nq_x
+        Pr \left( T_x \leq n \right) = Pr \left( T \leq x+n \mid T > x \right) = {}_nq_x
 
     where :math:`T_x` is the random variable describing the remaining lifetime of an individual aged :math:`x`.
 
