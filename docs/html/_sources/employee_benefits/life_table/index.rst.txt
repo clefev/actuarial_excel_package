@@ -122,7 +122,7 @@ the MR-FR and MK-FK tables i.e.
 Finally, note that all of these tables are only calculated for integer ages :math:`x` (not for fractional ages)
 and that the number of people alive :math:`l_x` is rounded to the nearest integer.
 In the case of fractional ages, a linear interpolation is performed (see :ref:`employee_benefits.life_table.survivors`).
-The ultimate age is :math:`x_{max} = 120` years old.
+The ultimate age is set at 120 years.
 
 .. rubric:: :subtitle:`Age correction`
 
