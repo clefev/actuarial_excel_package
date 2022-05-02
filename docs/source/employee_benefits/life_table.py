@@ -122,6 +122,14 @@ def survival_probability(x, n=1, table=1, correction=0):
 
     where :math:`l_x` is the number of people alive at age :math:`x`.
 
+    From a probabilistic point of view, :math:`_np_x` is the survival function of
+    the random variable :math:`T_x`:
+
+    .. math::
+        Pr \left( T_x > n \right) = Pr \left( T > x+n | T > x \right) = {}_np_x
+
+    where :math:`T_x` is the random variable describing the remaining lifetime of an individual aged :math:`x`.
+
     Finally, note that we have the following decomposition formula
 
     .. math::
@@ -180,6 +188,14 @@ def death_probability(x, n=1, table=1, correction=0):
         _nq_x = 1 - _np_x = \frac{l_x - l_{x+n}}{l_x}
 
     where :math:`l_x` is the number of people alive at age :math:`x`.
+
+    From a probabilistic point of view, :math:`_nq_x` is the survival function of
+    the random variable :math:`T_x`:
+
+    .. math::
+        Pr \left( T_x \leq n \right) = Pr \left( T \leq x+n | T > x \right) = {}_nq_x
+
+    where :math:`T_x` is the random variable describing the remaining lifetime of an individual aged :math:`x`.
 
     Finally, note that we have the following decomposition formula
 

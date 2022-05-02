@@ -104,6 +104,8 @@ related to life tables.</p>
 <li><p>All time units are expressed in years.</p></li>
 <li><p>The current age of an individual is denoted <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 <li><p>The guaranteed interest rate is yearly compounded and denoted <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>The random variable describing the time-to-death (from birth) is denoted <span class="math notranslate nohighlight">\(T\)</span>
+while the remaining lifetime of an individual aged <span class="math notranslate nohighlight">\(x\)</span> is given by the random variable <span class="math notranslate nohighlight">\(T_x = T | T&gt;x\)</span>.</p></li>
 </ul>
 </div></blockquote>
 <p class="rubric"><span class="subtitle">Life tables</span></p>
@@ -208,7 +210,8 @@ the MR-FR and MK-FK tables i.e.</p>
 \[l_x^{XR} = \frac{l_x^{MR} + l_x^{FR}}{2} \qquad \text{and} \qquad l_x^{XK} = \frac{l_x^{MK} + l_x^{FK}}{2}.\]</div>
 <p>Finally, note that all of these tables are only calculated for integer ages <span class="math notranslate nohighlight">\(x\)</span> (not for fractional ages)
 and that the number of people alive <span class="math notranslate nohighlight">\(l_x\)</span> is rounded to the nearest integer.
-In the case of fractional ages, a linear interpolation is performed (see <a class="reference internal" href="survivors.html#employee-benefits-life-table-survivors"><span class="std std-ref">Survivors</span></a>).</p>
+In the case of fractional ages, a linear interpolation is performed (see <a class="reference internal" href="survivors.html#employee-benefits-life-table-survivors"><span class="std std-ref">Survivors</span></a>).
+The ultimate age is <span class="math notranslate nohighlight">\(x_{max} = 120\)</span> years old.</p>
 <p class="rubric"><span class="subtitle">Age correction</span></p>
 <p>All the functions implemented in this module provide a possibility of age correction.
 An age correction increases or decreases the actual age of an individual.

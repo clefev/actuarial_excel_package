@@ -31,6 +31,8 @@ The following conventions and notations will be used throughout the rest of the 
     - All time units are expressed in years.
     - The current age of an individual is denoted :math:`x`.
     - The guaranteed interest rate is yearly compounded and denoted :math:`i`.
+    - The random variable describing the time-to-death (from birth) is denoted :math:`T`
+      while the remaining lifetime of an individual aged :math:`x` is given by the random variable :math:`T_x = T | T>x`. 
 
 .. rubric:: :subtitle:`Life tables`
 
@@ -111,6 +113,7 @@ the MR-FR and MK-FK tables i.e.
 Finally, note that all of these tables are only calculated for integer ages :math:`x` (not for fractional ages)
 and that the number of people alive :math:`l_x` is rounded to the nearest integer.
 In the case of fractional ages, a linear interpolation is performed (see :ref:`employee_benefits.life_table.survivors`).
+The ultimate age is :math:`x_{max} = 120` years old.
 
 .. rubric:: :subtitle:`Age correction`
 
