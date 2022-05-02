@@ -104,10 +104,15 @@ related to life tables.</p>
 <li><p>All time units are expressed in years.</p></li>
 <li><p>The current age of an individual is denoted <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 <li><p>The guaranteed interest rate is yearly compounded and denoted <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
-<li><p>The random variable describing the time-to-death (from birth) is denoted <span class="math notranslate nohighlight">\(T\)</span>
-while the remaining lifetime of an individual aged <span class="math notranslate nohighlight">\(x\)</span> is given by the random variable <span class="math notranslate nohighlight">\(T_x = T | T&gt;x\)</span>.</p></li>
 </ul>
 </div></blockquote>
+<p class="rubric"><span class="subtitle">Probabilistic view</span></p>
+<p>The life expectancy of an individual can be studied from a probabilistic point of view as a random variable.
+The random variable describing the time-to-death (from birth) is denoted <span class="math notranslate nohighlight">\(T\)</span>.
+Therefore, the remaining lifetime of an individual aged <span class="math notranslate nohighlight">\(x\)</span> is given by the random variable:</p>
+<div class="math notranslate nohighlight">
+\[T_x = T-x | T&gt;x,\]</div>
+<p>that is the remaining lifetime (i.e. <span class="math notranslate nohighlight">\(T-x\)</span>) given that the individual is still alive at age <span class="math notranslate nohighlight">\(x\)</span> (i.e. <span class="math notranslate nohighlight">\(T&gt;x\)</span>).</p>
 <p class="rubric"><span class="subtitle">Life tables</span></p>
 <p>The life tables recognized by the module are listed below:</p>
 <table class="colwidths-given docutils align-center" id="id2">

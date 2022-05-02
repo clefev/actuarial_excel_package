@@ -31,8 +31,17 @@ The following conventions and notations will be used throughout the rest of the 
     - All time units are expressed in years.
     - The current age of an individual is denoted :math:`x`.
     - The guaranteed interest rate is yearly compounded and denoted :math:`i`.
-    - The random variable describing the time-to-death (from birth) is denoted :math:`T`
-      while the remaining lifetime of an individual aged :math:`x` is given by the random variable :math:`T_x = T | T>x`. 
+
+.. rubric:: :subtitle:`Probabilistic view`
+
+The life expectancy of an individual can be studied from a probabilistic point of view as a random variable.
+The random variable describing the time-to-death (from birth) is denoted :math:`T`.
+Therefore, the remaining lifetime of an individual aged :math:`x` is given by the random variable:
+
+.. math::
+    T_x = T-x | T>x,
+
+that is the remaining lifetime (i.e. :math:`T-x`) given that the individual is still alive at age :math:`x` (i.e. :math:`T>x`).
 
 .. rubric:: :subtitle:`Life tables`
 

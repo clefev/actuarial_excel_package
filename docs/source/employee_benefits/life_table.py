@@ -189,7 +189,7 @@ def death_probability(x, n=1, table=1, correction=0):
 
     where :math:`l_x` is the number of people alive at age :math:`x`.
 
-    From a probabilistic point of view, :math:`_nq_x` is the survival function of
+    From a probabilistic point of view, :math:`_nq_x` is the cumulative distribution function (cdf) of
     the random variable :math:`T_x`:
 
     .. math::
