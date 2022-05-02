@@ -22,7 +22,7 @@ Each add-in contains modules to separate features and each module contains a set
 Contact
 -------
 
-Questions ? Remarks ? Bugs ? Don't hesitate to contact the modelling team !
+Questions ? Remarks ? Bugs ? Training needs ? Don't hesitate to contact the modelling team !
 
 .. list-table:: Contact list
     :header-rows: 1
