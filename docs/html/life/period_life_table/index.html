@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Period life table &mdash; Actuarial Excel add-ins  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Survivors" href="survivors.html" />
+    <link rel="prev" title="Life &amp; Employee Benefits" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Actuarial Excel add-ins
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Life &amp; Employee Benefits</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Period life table</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="survivors.html">Survivors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deaths.html">Deaths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="survival_probability.html">Survival probability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="death_probability.html">Death probability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="force_of_mortality.html">Force of mortality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="life_expectancy.html">Life expectancy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pure_endowment.html">Pure endowment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="whole_life_annuity.html">Whole life annuity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="term_annuity.html">Term annuity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="whole_life_insurance.html">Whole life insurance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="term_insurance.html">Term insurance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cohort_life_table/index.html">Cohort life table</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Actuarial Excel add-ins</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Life &amp; Employee Benefits</a> &raquo;</li>
+      <li>Period life table</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/life/period_life_table/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="period-life-table">
+<span id="life-period-life-table"></span><h1>Period life table<a class="headerlink" href="#period-life-table" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This module is in draft version.</p>
+</div>
+<p>This Excel add-in allows calculations on period life tables.</p>
+<p class="rubric"><span class="subtitle">Conventions and notations</span></p>
+<p>The following conventions and notations will be used throughout the rest of the documentation:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>All time units are expressed in years.</p></li>
+<li><p>The current age of an individual is denoted <span class="math notranslate nohighlight">\(x\)</span> (e.g., <span class="math notranslate nohighlight">\(x=50\)</span> for a 50 year old individual or <span class="math notranslate nohighlight">\(x=50.75\)</span> for an individual aged 50 years and 9 months).</p></li>
+<li><p>The guaranteed interest rate is yearly compounded and denoted <span class="math notranslate nohighlight">\(i\)</span> (e.g., <span class="math notranslate nohighlight">\(i=1.75\%\)</span>).</p></li>
+</ul>
+</div></blockquote>
+<p class="rubric"><span class="subtitle">Probabilistic view</span></p>
+<p>The life expectancy of an individual can be studied from a probabilistic point of view as a random variable.
+The random variable describing the time-to-death (from birth) is denoted <span class="math notranslate nohighlight">\(T\)</span>.
+Therefore, the remaining lifetime of an individual aged <span class="math notranslate nohighlight">\(x\)</span> is given by the random variable:</p>
+<div class="math notranslate nohighlight">
+\[T_x = T-x \mid T&gt;x,\]</div>
+<p>that is the remaining lifetime (i.e. <span class="math notranslate nohighlight">\(T-x\)</span>) given that the individual is still alive at age <span class="math notranslate nohighlight">\(x\)</span> (i.e. knowing that <span class="math notranslate nohighlight">\(T&gt;x\)</span>).</p>
+<p class="rubric"><span class="subtitle">Life tables</span></p>
+<p>The life tables recognized by the module are listed below:</p>
+<table class="colwidths-given docutils align-center" id="id2">
+<caption><span class="caption-text">List of period life tables</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p class="centered">
+<strong>Name</strong></p></th>
+<th class="head"><p class="centered">
+<strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>MR</p></th>
+<td><p>Belgian regulatory table for male life operations</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>FR</p></th>
+<td><p>Belgian regulatory table for female life operations</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>XR</p></th>
+<td><p>Belgian regulatory table for unisex life operations</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>MK</p></th>
+<td><p>Belgian regulatory table for male death operations</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>FK</p></th>
+<td><p>Belgian regulatory table for female death operations</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>FK’</p></th>
+<td><p>Alternative table for female death operations including
+a higher mortality loading compared to the regulatory FK table</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>XK</p></th>
+<td><p>Belgian regulatory table for unisex death operations</p></td>
+</tr>
+</tbody>
+</table>
+<p>These tables are calculated using the Makeham model. The Makeham model is a parametric model assuming
+that the number of people alive at age <span class="math notranslate nohighlight">\(x\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[l_x = k s^x g^{c^x}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k&gt;0\)</span>, <span class="math notranslate nohighlight">\(s \in (0,1]\)</span>, <span class="math notranslate nohighlight">\(g \in (0,1)\)</span> and <span class="math notranslate nohighlight">\(c&gt;1\)</span>.
+The following parameters are used to build the Belgian regulatory tables:</p>
+<table class="docutils align-center" id="id3">
+<caption><span class="caption-text">Parameters of the Makeham model</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p class="centered">
+<strong>MR</strong></p></th>
+<th class="head"><p class="centered">
+<strong>FR</strong></p></th>
+<th class="head"><p class="centered">
+<strong>MK</strong></p></th>
+<th class="head"><p class="centered">
+<strong>FK</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><span class="math notranslate nohighlight">\(k\)</span></p></th>
+<td><p>1000266.63</p></td>
+<td><p>1000048.56</p></td>
+<td><p>1000450.59</p></td>
+<td><p>1000097.39</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><span class="math notranslate nohighlight">\(s\)</span></p></th>
+<td><p>0.999441703848</p></td>
+<td><p>0.999669730966</p></td>
+<td><p>0.999106875782</p></td>
+<td><p>0.999257048061</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><span class="math notranslate nohighlight">\(g\)</span></p></th>
+<td><p>0.999733441115</p></td>
+<td><p>0.999951440172</p></td>
+<td><p>0.999549614043</p></td>
+<td><p>0.999902624311</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><span class="math notranslate nohighlight">\(c\)</span></p></th>
+<td><p>1.101077536030</p></td>
+<td><p>1.116792453830</p></td>
+<td><p>1.103798111448</p></td>
+<td><p>1.118239062025</p></td>
+</tr>
+</tbody>
+</table>
+<p>The alternative FK’ table is defined in the same way as the FK table except that the parameter <span class="math notranslate nohighlight">\(c\)</span>
+is set to 1.122 (leading to an increase in mortality).
+The unisex tables XR and XK are calculated for each integer age <span class="math notranslate nohighlight">\(x\)</span> as an arithmetic average of
+the MR-FR and MK-FK tables i.e.</p>
+<div class="math notranslate nohighlight">
+\[l_x^{XR} = \frac{l_x^{MR} + l_x^{FR}}{2} \qquad \text{and} \qquad l_x^{XK} = \frac{l_x^{MK} + l_x^{FK}}{2}.\]</div>
+<p>Note that all of these tables are only calculated for integer ages <span class="math notranslate nohighlight">\(x\)</span> (not for fractional ages)
+and that the number of people alive <span class="math notranslate nohighlight">\(l_x\)</span> is rounded to the nearest integer.
+In the case of fractional ages, the module assumes a constant force of mortality between two consecutive integer ages.
+Finally, the ultimate age is always less than or equal to 120 years.</p>
+<p class="rubric"><span class="subtitle">Age correction</span></p>
+<p>All the functions implemented in this module provide a possibility of age correction.
+An age correction increases or decreases the actual age of an individual.
+For instance, an age correction of -3 years assumes that an individual aged <span class="math notranslate nohighlight">\(x\)</span> (real age)
+is aged <span class="math notranslate nohighlight">\(x-3\)</span> instead (corrected age) <a class="footnote-reference brackets" href="#corrected-age" id="id1">1</a>.
+Age corrections are used to provide a safety loading when performing actuarial calculations.
+It is common practice to use a negative age correction (reduction) when calculating the present value of an annuity
+with the MR/FR/XR tables.</p>
+<dl class="footnote brackets">
+<dt class="label" id="corrected-age"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>In practice, the corrected age is calculated as <span class="math notranslate nohighlight">\(\max(x + correction, 0)\)</span> to avoid negative ages when the correction is negative.</p>
+</dd>
+</dl>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Life &amp; Employee Benefits" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="survivors.html" class="btn btn-neutral float-right" title="Survivors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Corentin LEFEVRE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

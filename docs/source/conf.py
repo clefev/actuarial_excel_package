@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Actuarial Package for Excel'
+project = 'Actuarial Excel add-ins'
 copyright = '2022, Corentin LEFEVRE'
 author = 'Corentin LEFEVRE'
 

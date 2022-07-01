@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life expectancy &mdash; Actuarial Excel add-ins  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Pure endowment" href="pure_endowment.html" />
+    <link rel="prev" title="Death probability" href="death_probability.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Actuarial Excel add-ins
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Life &amp; Employee Benefits</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../period_life_table/index.html">Period life table</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Cohort life table</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="force_of_mortality.html">Force of mortality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="survival_probability.html">Survival probability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="death_probability.html">Death probability</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Life expectancy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pure_endowment.html">Pure endowment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="whole_life_annuity.html">Whole life annuity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="term_annuity.html">Term annuity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="whole_life_insurance.html">Whole life insurance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="term_insurance.html">Term insurance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Actuarial Excel add-ins</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Life &amp; Employee Benefits</a> &raquo;</li>
+          <li><a href="index.html">Cohort life table</a> &raquo;</li>
+      <li>Life expectancy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/life/cohort_life_table/life_expectancy.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="life-expectancy">
+<span id="life-cohort-life-table-life-expectancy"></span><h1>Life expectancy<a class="headerlink" href="#life-expectancy" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="life.cohort_life_table.cohort_life_expectancy">
+<span class="sig-name descname"><span class="pre">cohort_life_expectancy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#life.cohort_life_table.cohort_life_expectancy" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the life expectancy <span class="math notranslate nohighlight">\(e_x(t)\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The life expectancy <span class="math notranslate nohighlight">\(e_x(t)\)</span> is the expected remaining lifetime of an individual aged <span class="math notranslate nohighlight">\(x\)</span> in calendar year <span class="math notranslate nohighlight">\(t\)</span>.
+It is defined by</p>
+<div class="math notranslate nohighlight">
+\[e_x(t) = \mathbb{E}[T_x(t)] = \int_0^\infty {}_{\tau}p_x(t) d\tau\]</div>
+<p>where <span class="math notranslate nohighlight">\(T_x(t)\)</span> is the random variable describing the remaining lifetime of an individual aged <span class="math notranslate nohighlight">\(x\)</span> in calendar year <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>numeric</em>) – Age.</p></li>
+<li><p><strong>t</strong> (<em>numeric</em>) – Calendar year.</p></li>
+<li><p><strong>table</strong> (<em>string</em>) – Life table to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Life expectancy of an individual aged <span class="math notranslate nohighlight">\(x\)</span> in calendar year <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numeric (non-negative)</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Compute <span class="math notranslate nohighlight">\(e_{65}(2030)\)</span> according to the IABE table for males
+(life expectancy of a Belgian male aged 65 in the calendar year 2030):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cohort_life_expectancy</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">2030</span><span class="p">,</span> <span class="s2">&quot;IABE male&quot;</span><span class="p">)</span>
+<span class="go">21.71</span>
+</pre></div>
+</div>
+<p>Compare with a male aged 65 in the calendar year 2060:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cohort_life_expectancy</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">2060</span><span class="p">,</span> <span class="s2">&quot;IABE male&quot;</span><span class="p">)</span>
+<span class="go">25.11</span>
+</pre></div>
+</div>
+<p>Compare the results with the female table:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cohort_life_expectancy</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">2030</span><span class="p">,</span> <span class="s2">&quot;IABE female&quot;</span><span class="p">)</span>
+<span class="go">24.16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cohort_life_expectancy</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">2060</span><span class="p">,</span> <span class="s2">&quot;IABE female&quot;</span><span class="p">)</span>
+<span class="go">26.74</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="death_probability.html" class="btn btn-neutral float-left" title="Death probability" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pure_endowment.html" class="btn btn-neutral float-right" title="Pure endowment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Corentin LEFEVRE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

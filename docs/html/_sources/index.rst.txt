@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Actuarial Package for Excel
-===========================
+Actuarial Excel add-ins
+=======================
 
 This document is intended to serve as documentation for Excel add-ins dedicated to actuarial science.
 
@@ -17,7 +17,7 @@ Each add-in contains modules to separate features and each module contains a set
 .. toctree::
     :maxdepth: 1
 
-    employee_benefits/index.rst
+    life/index.rst
 
 Contact
 -------
